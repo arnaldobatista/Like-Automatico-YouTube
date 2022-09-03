@@ -28,8 +28,6 @@
     }
     document.body.addEventListener('yt-navigate-finish', function (event) {
         if (window.location.pathname == '/watch') {
-            console.log(window.location.href)
-            console.log(window.location.pathname)
             like()
         }
     })
