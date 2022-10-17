@@ -32,13 +32,13 @@
         }
     })
 
-    let waitForElement = (selector, callback) => {
+    const waitForElement = (selector, callback) => {
         const element = document.querySelector(selector)
         if (element) return callback(element)
         return window.requestAnimationFrame(() => waitForElement(selector, callback))
     }
 
-    let downloadButton = document.createElement( 'tp-yt-paper-button' )
+    const downloadButton = document.createElement( 'tp-yt-paper-button' )
     downloadButton.textContent = 'Download'
     downloadButton.classList.add('ytd-subscribe-button-renderer')
     downloadButton.onclick = () => window.open(`https://www.ssyoutube.com/watch?v=${new URL(window.location).searchParams.get("v")}`, '_blank')
@@ -47,7 +47,7 @@
 
     setInterval(() => {
         if(document.querySelector('ytd-download-button-renderer')){
-            var trueDownaload = document.querySelector('ytd-download-button-renderer')
+            const trueDownaload = document.querySelector('ytd-download-button-renderer')
             if(trueDownaload.parentNode){
                 trueDownaload.parentNode.removeChild(trueDownaload)
                 clearInterval()
