@@ -2,7 +2,7 @@
 
 <h3> 🚧 &nbsp;Sobre o projeto </h3>
 
-- 🤔 &nbsp; Nesse projeto desenvolvi um script para Tampermonkey para dar Like automaticamente em vídeos do YouTube.
+- 🤔 &nbsp; Nesse projeto desenvolvi um script para Tampermonkey para dar Like automaticamente e baixar vídeos do YouTube.
 
 <h3> :rocket: &nbsp;O que foi usado? </h3>
 
