@@ -2,13 +2,13 @@
 // @name         Like Automático e Download - YouTube
 // @homepageURL
 // @namespace    http://tampermonkey.net/
-// @version      3.0
+// @version      4.0
 // @description  Script para curtir automaticamente vídeos do Youtube e add botão de dowload
 // @license MIT
 // @icon https://logospng.org/download/facebook-like/logo-facebook-like-1536.png
 // @author       Arnaldo Carpi
 // @copyright 2022, Arnaldo Carpi (https://github.com/arnaldocarpi)
-// @match        https://www.youtube.com/watch*
+// @match        https://www.youtube.com/*
 // @run-at       document-end
 // @grant        none
 // ==/UserScript==
@@ -17,16 +17,17 @@
     'use strict'
     const like = () => {
         const interval = setInterval(() => {
-            const btnlike = document.querySelector('#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(1)')
+            const btnlike = document.querySelector('ytd-toggle-button-renderer > yt-button-shape > button')
             if (btnlike) {
                 clearInterval(interval)
-                if (!btnlike.classList.contains('style-default-active')) {
+    
+                if(btnlike.getAttribute("aria-pressed") == 'false'){
                     btnlike.click()
                 }
             }
         }, 1000)
     }
-    document.body.addEventListener('yt-navigate-finish', function (event) {
+    document.body.addEventListener('yt-navigate-finish', function () {
         if (window.location.pathname == '/watch') {
             like()
         }
@@ -40,7 +41,10 @@
 
     const downloadButton = document.createElement( 'tp-yt-paper-button' )
     downloadButton.textContent = 'Download'
-    downloadButton.classList.add('ytd-subscribe-button-renderer')
+    downloadButton.classList.add('yt-spec-button-shape-next')
+    downloadButton.classList.add('yt-spec-button-shape-next--tonal')
+    downloadButton.classList.add('yt-spec-button-shape-next--mono')
+    downloadButton.classList.add('yt-spec-button-shape-next--size-m')
     downloadButton.onclick = () => window.open(`https://www.ssyoutube.com/watch?v=${new URL(window.location).searchParams.get("v")}`, '_blank')
 
     waitForElement('ytd-subscribe-button-renderer', target => target.appendChild( downloadButton ))
