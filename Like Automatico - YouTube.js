@@ -50,14 +50,16 @@
         return window.requestAnimationFrame(() => waitForElement(selector, callback))
     }
 
-    const styleMarginLeftDownload = setInterval(() => {
-        const subscription = document.querySelector('ytd-subscribe-button-renderer > yt-button-shape > button > div > span').innerHTML
-        if (subscription === 'Inscrever-se') {
-            document.querySelector('ytd-subscribe-button-renderer > tp-yt-paper-button:nth-child(5)').setAttribute('style', 'margin-left: 10px;')
-        } if (subscription === 'Inscrito') {
-            document.querySelector('ytd-subscribe-button-renderer > tp-yt-paper-button:nth-child(5)').setAttribute('style')
-        }
-    }, 1000)
+    const styleMarginLeftDownload = () => {
+        setInterval(() => {
+            const subscription = document.querySelector('ytd-subscribe-button-renderer > yt-button-shape > button > div > span').innerHTML
+            if (subscription === 'Inscrever-se') {
+                document.querySelector('ytd-subscribe-button-renderer > tp-yt-paper-button:nth-child(5)').setAttribute('style', 'margin-left: 8px;')
+            } if (subscription === 'Inscrito') {
+                document.querySelector('ytd-subscribe-button-renderer > tp-yt-paper-button:nth-child(5)').setAttribute('style')
+            }
+        }, 1000)
+    }
     // fim - btn download
 
     // remover btn download YT premium
@@ -72,9 +74,14 @@
     }, 1000)
     // fim - remover btn download YT premium
 
-    if (window.location.pathname == '/watch') {
-        setInterval(() => like(), 2000)
-        waitForElement('ytd-subscribe-button-renderer', target => target.appendChild(downloadButton))
-        styleMarginLeftDownload()
-    }
+    setInterval(() => {
+        if (window.location.pathname == '/watch') {
+            like()
+            waitForElement('ytd-subscribe-button-renderer', target => target.appendChild(downloadButton))
+            styleMarginLeftDownload()
+            clearInterval()
+        }
+    }, 1000)
 })()
+
+
