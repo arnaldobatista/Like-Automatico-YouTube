@@ -2,7 +2,7 @@
 // @name         Like Automático e Download - YouTube
 // @homepageURL
 // @namespace    http://tampermonkey.net/
-// @version      5.0
+// @version      5.3
 // @description  Script para curtir automaticamente vídeos do Youtube e add botão de dowload
 // @license MIT
 // @icon https://logospng.org/download/facebook-like/logo-facebook-like-1536.png
@@ -17,21 +17,18 @@
     'use strict'
     // like automatico
     const like = () => {
-        const interval = setInterval(() => {
-            const btnLike = document.querySelector('ytd-toggle-button-renderer > yt-button-shape > button')
-            const btnDesLike = document.querySelector('ytd-segmented-like-dislike-button-renderer > div:nth-child(2) > ytd-toggle-button-renderer > yt-button-shape > button')
 
-            if (btnLike) {
-                if (btnDesLike.getAttribute("aria-pressed") == btnLike.getAttribute("aria-pressed")) {
-                    btnLike.click()
-                    clearInterval(interval)
-                    return
-                } else {
-                    clearInterval(interval)
-                    return
-                }
+        let btnLike = document.querySelector('ytd-segmented-like-dislike-button-renderer > div:nth-child(1) > ytd-toggle-button-renderer > yt-button-shape > button')
+        let btnDesLike = document.querySelector('ytd-segmented-like-dislike-button-renderer > div:nth-child(2) > ytd-toggle-button-renderer > yt-button-shape > button')
+
+        if (btnLike) {
+            if (btnDesLike.getAttribute("aria-pressed") == btnLike.getAttribute("aria-pressed")) {
+                btnLike.click()
+                return
+            } else {
+                return
             }
-        }, 1000)
+        }
     }
     // fim - like automatico
 
@@ -79,7 +76,7 @@
             like()
             waitForElement('ytd-subscribe-button-renderer', target => target.appendChild(downloadButton))
             styleMarginLeftDownload()
-            clearInterval()
+            // clearInterval()
         }
     }, 1000)
 })()
