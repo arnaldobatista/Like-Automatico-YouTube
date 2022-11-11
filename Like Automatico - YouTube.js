@@ -2,7 +2,7 @@
 // @name         Like Automático e Download - YouTube
 // @homepageURL
 // @namespace    http://tampermonkey.net/
-// @version      5.3
+// @version      5.3.1
 // @description  Script para curtir automaticamente vídeos do Youtube e add botão de dowload
 // @license MIT
 // @icon https://logospng.org/download/facebook-like/logo-facebook-like-1536.png
@@ -15,9 +15,13 @@
 
 (function () {
     'use strict'
+    // verificar login
+    const loginSelectElement = document.querySelector('ytd-masthead > div:nth-child(4) > div:nth-child(3) > div:nth-child(2) > ytd-button-renderer')
+    const loginSelectIdAndInner = loginSelectElement.querySelector('.yt-core-attributed-string--white-space-no-wrap').innerHTML
+    // fim verificar login
+
     // like automatico
     const like = () => {
-
         let btnLike = document.querySelector('ytd-segmented-like-dislike-button-renderer > div:nth-child(1) > ytd-toggle-button-renderer > yt-button-shape > button')
         let btnDesLike = document.querySelector('ytd-segmented-like-dislike-button-renderer > div:nth-child(2) > ytd-toggle-button-renderer > yt-button-shape > button')
 
@@ -70,15 +74,14 @@
         }
     }, 1000)
     // fim - remover btn download YT premium
-
+    
     setInterval(() => {
         if (window.location.pathname == '/watch') {
-            like()
+            if (loginSelectIdAndInner !== 'Fazer login') {
+                like()
+            }
             waitForElement('ytd-subscribe-button-renderer', target => target.appendChild(downloadButton))
             styleMarginLeftDownload()
-            // clearInterval()
         }
     }, 1000)
 })()
-
-
