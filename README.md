@@ -24,4 +24,5 @@
 [![GitHub Arnaldo Carpi]( https://img.shields.io/github/followers/VanessaSwerts?label=follow&style=social)](https://github.com/arnaldocarpi)
 
 <h3>Botão em execução</h3>
-<img src="https://github.com/arnaldocarpi/Like-Automatico-YouTube/blob/main/imagens/Gravac%CC%A7a%CC%83o-de-Tela-2022-09-06-a%CC%80s-11.51.28.gif">
+
+https://www.youtube.com/embed/RIo3_UpCzus?controls=0
