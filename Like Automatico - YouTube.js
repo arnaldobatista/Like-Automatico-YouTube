@@ -2,7 +2,7 @@
 // @name         Like Automático e Download - YouTube
 // @homepageURL
 // @namespace    http://tampermonkey.net/
-// @version      5.4.1
+// @version      6.0.0
 // @description  Script para curtir automaticamente vídeos do Youtube e add botão de dowload
 // @license MIT
 // @icon https://logospng.org/download/facebook-like/logo-facebook-like-1536.png
@@ -38,7 +38,31 @@
     downloadButton.classList.add('yt-spec-button-shape-next--tonal')
     downloadButton.classList.add('yt-spec-button-shape-next--mono')
     downloadButton.classList.add('yt-spec-button-shape-next--size-m')
-    downloadButton.onclick = () => window.open(`https://www.ssyoutube.com/watch?v=${new URL(window.location).searchParams.get("v")}`, '_blank')
+    downloadButton.onclick = () => {
+        const url = new URL(window.location)
+        const options = {
+            method: 'POST',
+            body: JSON.stringify({ url: url }),
+            headers: { 'Content-Type': 'application/json' },
+        }
+        fetch('https://ssyoutube.online/wp-json/aio-dl/video-data/', options)
+            .then((response) => response.json())
+            .then((data) => {
+                // Filtrar somente URLs com extensão MP4
+                const mp4Video = data.medias.filter(video => video.extension === "mp4");
+                // Ordenar por resolução
+                mp4Video.sort((a, b) => {
+                    const resolutionA = parseInt(a.quality.match(/\d+/));
+                    const resolutionB = parseInt(b.quality.match(/\d+/));
+                    return resolutionB - resolutionA;
+                });
+                // Abrir a URL
+                window.open(mp4Video[0].url);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
 
     const waitForElement = (selector, callback) => {
         const element = document.querySelector(selector)
