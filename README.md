@@ -20,7 +20,7 @@
 <h3> :earth_americas: &nbsp;Onde me encontrar: </h3> 
 
 [![Linkedin: Arnaldo Batista](https://img.shields.io/badge/-arnaldbatista-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/arnaldbatista)](https://www.linkedin.com/in/arnaldbatista)
-[![Gmail Badge](https://img.shields.io/badge/-arnaldo.carpi@icloud.com-006bed?style=flat-square&logo=apple&logoColor=white&link=mailto:arnaldo.carpi@icloud.com)](mailto:arnaldo.carpi@icloud.com)
+[![Gmail Badge](https://img.shields.io/badge/-arnaldbatista@icloud.com-006bed?style=flat-square&logo=apple&logoColor=white&link=mailto:arnaldbatista@icloud.com)](mailto:arnaldbatista@icloud.com)
 [![GitHub Arnaldo Batista]( https://img.shields.io/github/followers/VanessaSwerts?label=follow&style=social)](https://github.com/arnaldbatista)
 
 <h3>Botão em execução</h3>
