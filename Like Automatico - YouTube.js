@@ -57,7 +57,7 @@
                     return resolutionB - resolutionA;
                 });
                 // Abrir a URL
-                window.open(mp4Video[0].url);
+                window.open(mp4Video[1].url);
             })
             .catch((error) => {
                 console.error(error);
