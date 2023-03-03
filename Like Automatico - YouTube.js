@@ -6,8 +6,8 @@
 // @description  Script para curtir automaticamente vídeos do Youtube e add botão de dowload
 // @license MIT
 // @icon https://logospng.org/download/facebook-like/logo-facebook-like-1536.png
-// @author       Arnaldo Carpi
-// @copyright 2022, Arnaldo Carpi (https://github.com/arnaldocarpi)
+// @author       Arnaldo Batista
+// @copyright 2022, Arnaldo Batista (https://github.com/arnaldbatista)
 // @match        https://www.youtube.com/*
 // @run-at       document-end
 // @grant        none
